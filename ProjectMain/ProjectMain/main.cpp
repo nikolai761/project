@@ -5,5 +5,5 @@ using namespace std;
 
 void main()
 {
-	cout << "FirstButEdited";
+	cout << "SecondEdit";
 }
