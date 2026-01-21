@@ -7,14 +7,13 @@ class Transaction
 public:
 
 	enum class TransactionType
-	{
-		NONE,
-		INCOME,
-		OUT
+	{ 
+      	INCOME,
+		OUT,
+		NONE
 	};
 	enum class TransactionCategory
 	{
-		NONE,
 		CHEMISTRY,
 		GASOLINE,
 		HOMEPAY,
@@ -34,8 +33,23 @@ public:
 	{
 		amount = 0;
 		date = " " ;
-		category = TransactionCategory::CHEMISTRY;
-		type = TransactionType::OUT;
+		category = TransactionCategory::NONE;
+		type = TransactionType::NONE;
+	}
+
+	Transaction(int _amount, string _date, TransactionCategory _category, TransactionType _type)
+	{
+		amount = _amount;
+		date = _date;
+		category = _category;
+		type = _type;
+	}
+
+	template <typename T>
+	explicit Transaction(T a) {};
+
+	int GetAmount() const
+	{
 
 	}
 };
