@@ -22,19 +22,28 @@ public:
 		NONE
 	};
 
+
+	struct Date
+	{
+		int year, month, day;
+	};
+
 private:
 
 	int amount;
-	string date;
+	Date date;
 	TransactionCategory category;
 	TransactionType type;
 
 public:
 
-	Transaction();
+	Date get_current_date();
+
+	template <typename T>
+	explicit Transaction();
 
 
-	Transaction(int , string , TransactionCategory , TransactionType );
+	Transaction(int ,  TransactionCategory , TransactionType );
 
 	template <typename T>
 	explicit Transaction(T) ;
