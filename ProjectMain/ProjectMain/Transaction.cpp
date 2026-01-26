@@ -17,7 +17,8 @@ public:
 		CHEMISTRY,
 		GASOLINE,
 		HOMEPAY,
-		PRODUCTS
+		PRODUCTS,
+		NONE
 	};
 
 private:
@@ -35,6 +36,7 @@ public:
 		date = " " ;
 		category = TransactionCategory::NONE;
 		type = TransactionType::NONE;
+
 	}
 
 	Transaction(int _amount, string _date, TransactionCategory _category, TransactionType _type)
@@ -50,6 +52,34 @@ public:
 
 	int GetAmount() const
 	{
+		return this->amount;
+	}
+
+	auto GetDate() const
+	{
+		return this->date;
+	}
+
+	auto GetCategory()
+	{
+		switch (category)
+		{
+		case TransactionCategory::CHEMISTRY: {return "CHEMISTRY"; break;}
+		case TransactionCategory::GASOLINE: {return "GASOLINE"; break;}
+		case TransactionCategory::HOMEPAY: {return "HOMEPAY"; break;}
+		case TransactionCategory::PRODUCTS: {return "PRODUCTS"; break;}
+		}
+
+	}
+
+	auto GetType()
+	{
+		switch (type)
+		{
+		case TransactionType::INCOME: {return "INCOME"; break;}
+		case TransactionType::OUT: {return "OUT"; break;}
+		
+		}
 
 	}
 };
