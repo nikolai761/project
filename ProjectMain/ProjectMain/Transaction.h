@@ -39,8 +39,8 @@ public:
 
 	Date get_current_date();
 
-	template <typename T>
-	explicit Transaction();
+	
+	 Transaction();
 
 
 	Transaction(int ,  TransactionCategory , TransactionType );

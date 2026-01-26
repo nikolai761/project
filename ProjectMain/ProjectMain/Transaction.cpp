@@ -1,63 +1,10 @@
 #include <string>
 #include <ctime>
 #include <chrono>
+#include "Transaction.h"
 using std::string;
 
-
-class Transaction
-{
-public:
-
-	enum class TransactionType
-	{ 
-      	INCOME,
-		OUT,
-		NONE
-	};
-	enum class TransactionCategory
-	{
-		CHEMISTRY,
-		GASOLINE,
-		HOMEPAY,
-		PRODUCTS,
-		NONE
-	};
-
-	struct Time
-	{
-		int hours;
-		int minutes;
-	};
-
-	struct Date
-	{
-		int day;
-		int month;
-		int year;
-		Time time;
-	};
-
-	Date get_current_date() {
-		std::time_t t = std::time(nullptr);
-		std::tm* now = std::localtime(&t);
-
-		Date d;
-		d.year = now->tm_year + 1900;
-		d.month = now->tm_mon + 1;
-		d.day = now->tm_mday;
-		return d;
-	}
-
-private:
-
-	int amount;
-	Date date;
-	TransactionCategory category;
-	TransactionType type;
-
-public:
-
-	Transaction()
+	Transaction::Transaction()
 	{
 		amount = 0;
 	    date = get_current_date();
@@ -66,7 +13,7 @@ public:
 
 	}
 
-	Transaction(int _amount,  TransactionCategory _category, TransactionType _type)
+	Transaction::Transaction(int _amount,  TransactionCategory _category, TransactionType _type)
 	{
 		amount = _amount;
 		date = get_current_date();
@@ -75,19 +22,19 @@ public:
 	}
 
 	template <typename T>
-	explicit Transaction(T a) {};
+	Transaction::Transaction(T a) {};
 
-	int GetAmount() const
+	int Transaction::GetAmount() const
 	{
 		return this->amount;
 	}
 
-	auto GetDate() const
+	auto Transaction::GetDate() const
 	{
 		return this->date;
 	}
 
-	auto GetCategory()
+	auto Transaction::GetCategory()
 	{
 		switch (category)
 		{
@@ -99,7 +46,7 @@ public:
 
 	}
 
-	auto GetType()
+	auto Transaction::GetType()
 	{
 		switch (type)
 		{
@@ -109,4 +56,15 @@ public:
 		}
 
 	}
-};
+
+	Transaction::Date Transaction::get_current_date()
+	{
+		std::time_t t = std::time(nullptr);
+		std::tm* now = std::localtime(&t);
+
+		Date d;
+		d.year = now->tm_year + 1900;
+		d.month = now->tm_mon + 1;
+		d.day = now->tm_mday;
+		return d;
+	}
