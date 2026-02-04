@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
-
+#include <ctime>
+#include <chrono>
+#include <iostream>
 using std::string;
 
 class Transaction
@@ -37,26 +39,20 @@ private:
 
 public:
 
-	Date get_current_date();
+	static 	Date get_current_date();
+		
+	Transaction();
 
+	Transaction(int,  int, int );
+
+	void ShowInfo() const;
 	
-	 Transaction();
-
-
-	Transaction(int ,  TransactionCategory , TransactionType );
-
-	template <typename T>
-	explicit Transaction(T) ;
-
 	int GetAmount() const;
 
-
 	auto GetDate() const;
-	
 
-	auto GetCategory();
-	
+	std::string GetCategory() const;
 
-	auto GetType();
-	
+	std::string GetType() const;
+
 };

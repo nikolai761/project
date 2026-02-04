@@ -1,8 +1,4 @@
-#include <string>
-#include <ctime>
-#include <chrono>
 #include "Transaction.h"
-using std::string;
 
 	Transaction::Transaction()
 	{
@@ -13,16 +9,20 @@ using std::string;
 
 	}
 
-	Transaction::Transaction(int _amount,  TransactionCategory _category, TransactionType _type)
+	Transaction::Transaction(int _amount,  int _category, int _type)
 	{
 		amount = _amount;
 		date = get_current_date();
-		category = _category;
-		type = _type;
+		category = static_cast<Transaction::TransactionCategory>(_category);
+		type = static_cast<Transaction::TransactionType>(_type);
 	}
 
-	template <typename T>
-	Transaction::Transaction(T a) {};
+	void Transaction::ShowInfo() const
+	{
+		std::cout<< ""
+	}
+
+
 
 	int Transaction::GetAmount() const
 	{
@@ -34,7 +34,7 @@ using std::string;
 		return this->date;
 	}
 
-	auto Transaction::GetCategory()
+	std::string Transaction::GetCategory() const
 	{
 		switch (category)
 		{
@@ -46,7 +46,7 @@ using std::string;
 
 	}
 
-	auto Transaction::GetType()
+	std::string Transaction::GetType() const
 	{
 		switch (type)
 		{

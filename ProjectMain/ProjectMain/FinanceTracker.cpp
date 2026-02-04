@@ -9,13 +9,14 @@ FinanceTracker::FinanceTracker()
 
 void FinanceTracker::Show() const
 {
+
 }
 
 void FinanceTracker::AddOperation()
 {
-	int amountD, category, type;
+	int amountD, categoryD, typeD;
 
-	std::cout << "Enter money amount  of transction ";
+	std::cout << "Enter money amount  of transction " << std::endl;
 	std::cin >> amountD;
 
 	std::cout << "Choose category of  transction " << std::endl;
@@ -23,11 +24,14 @@ void FinanceTracker::AddOperation()
 	std::cout << "2 : GASOLINE   " << std::endl;
 	std::cout << "3 : HOMEPAY " << std::endl;
 	std::cout << "4 : PRODUCTS " << std::endl;
-	std::cin >> category;
+	std::cin >> categoryD;
 
+	std::cout << "Choose type of transction  " << std::endl;
+	std::cout << "1 : INCOME " << std::endl;
+	std::cout << "4 : OUT " << std::endl;
+	std::cin >> typeD;
 
-
-	
+	Operations.push_back(Transaction(amountD, categoryD, typeD));
 }
 
 
