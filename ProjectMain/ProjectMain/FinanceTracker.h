@@ -15,9 +15,13 @@ public:
 
 	void Show() const;
 
+	void ShowTransaction(Transaction ) const;
+
 	void AddOperation();
 
-	void SaveOperation();
+	bool SaveOperation(Transaction, const std::string& filename);
+
+	bool SaveOperations(std::vector<Transaction>, const std::string& filename);
 
 	void EditOperation();
 

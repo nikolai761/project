@@ -17,13 +17,6 @@
 		type = static_cast<Transaction::TransactionType>(_type);
 	}
 
-	void Transaction::ShowInfo() const
-	{
-		std::cout<< ""
-	}
-
-
-
 	int Transaction::GetAmount() const
 	{
 		return this->amount;

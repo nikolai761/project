@@ -1,5 +1,6 @@
 #include "FinanceTracker.h"
 #include <chrono>
+#include <fstream>
 
 
 FinanceTracker::FinanceTracker()
@@ -9,7 +10,24 @@ FinanceTracker::FinanceTracker()
 
 void FinanceTracker::Show() const
 {
+	std::cout << " Info about operations ";
+	for (auto op : Operations)
+	{
+		std::cout << "Amount : " << op.GetAmount()<< std::endl;
+		std::cout << "Cetegory : " << op.GetCategory() << std::endl;
+		std::cout << "Type : " << op.GetType() << std::endl;
+		std::cout << "Date : " << op.GetDate() << std::endl;
+		std::cout << "//////////////////////////////////////" << std::endl;
+	}
+}
 
+void FinanceTracker::ShowTransaction(Transaction T) const
+{
+	std::cout << "Amount : " << T.GetAmount() << std::endl;
+	std::cout << "Cetegory : " << T.GetCategory() << std::endl;
+	std::cout << "Type : " << T.GetType() << std::endl;
+	std::cout << "Date : " << T.GetDate() << std::endl;
+	std::cout << "//////////////////////////////////////" << std::endl;
 }
 
 void FinanceTracker::AddOperation()
@@ -34,12 +52,31 @@ void FinanceTracker::AddOperation()
 	Operations.push_back(Transaction(amountD, categoryD, typeD));
 }
 
-
-
-
-void FinanceTracker::SaveOperation()
+bool FinanceTracker::SaveOperation(Transaction Tr, const std::string& filename="DataBase")
 {
+	std::ofstream file(filename, std::ios::app);
+	if (!file.is_open()) return false;
+	file << Tr.GetAmount() << " " << Tr.GetType() << " " << Tr.GetCategory() << " " << Tr.GetDate() << "\n";
+	file.close();
+	return true;
 }
+
+bool FinanceTracker::SaveOperations(std::vector<Transaction> Trs, const std::string& filename)
+{
+	std::ofstream file(filename, std::ios::app);
+	if (!file.is_open()) return false;
+	for (auto t : Trs)
+	{
+		file << t.GetAmount() << " " << t.GetType() << " " << t.GetCategory() << " " << t.GetDate() << "\n";
+		
+
+	}
+	file.close();
+	return false;
+}
+
+
+
 
 void FinanceTracker::EditOperation()
 {

@@ -44,8 +44,6 @@ public:
 	Transaction();
 
 	Transaction(int,  int, int );
-
-	void ShowInfo() const;
 	
 	int GetAmount() const;
 
