@@ -16,7 +16,7 @@ void FinanceTracker::Show() const
 		std::cout << "Amount : " << op.GetAmount()<< std::endl;
 		std::cout << "Cetegory : " << op.GetCategory() << std::endl;
 		std::cout << "Type : " << op.GetType() << std::endl;
-		std::cout << "Date : " << op.GetDate() << std::endl;
+		std::cout << "Date : \n" << "Day: " << op.GetDate().day << "-" << "Month: " << op.GetDate().day << "-" << "Day: " << op.GetDate().day << "-" << std::endl;
 		std::cout << "//////////////////////////////////////" << std::endl;
 	}
 }
@@ -26,7 +26,7 @@ void FinanceTracker::ShowTransaction(Transaction T) const
 	std::cout << "Amount : " << T.GetAmount() << std::endl;
 	std::cout << "Cetegory : " << T.GetCategory() << std::endl;
 	std::cout << "Type : " << T.GetType() << std::endl;
-	std::cout << "Date : " << T.GetDate() << std::endl;
+	std::cout << "Date : \n" << "Day: "<< T.GetDate().day <<"-" << "Month: " << T.GetDate().day << "-" << "Day: " << T.GetDate().day << "-" << std::endl;
 	std::cout << "//////////////////////////////////////" << std::endl;
 }
 
@@ -52,7 +52,7 @@ void FinanceTracker::AddOperation()
 	Operations.push_back(Transaction(amountD, categoryD, typeD));
 }
 
-bool FinanceTracker::SaveOperation(Transaction Tr, const std::string& filename="DataBase")
+bool FinanceTracker::SaveOperation(Transaction Tr, const std::string& filename)
 {
 	std::ofstream file(filename, std::ios::app);
 	if (!file.is_open()) return false;

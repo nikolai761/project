@@ -44,10 +44,12 @@ public:
 	Transaction();
 
 	Transaction(int,  int, int );
+
+	Transaction(int, int, int, Transaction::Date);
 	
 	int GetAmount() const;
 
-	auto GetDate() const;
+	Transaction::Date GetDate() const;
 
 	std::string GetCategory() const;
 

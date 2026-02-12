@@ -9,12 +9,20 @@
 
 	}
 
-	Transaction::Transaction(int _amount,  int _category, int _type)
+	Transaction::Transaction(int _amount,  int _category, int _type) : 
+		amount (_amount),
+		date (get_current_date()),
+		category  (static_cast<Transaction::TransactionCategory>(_category)),
+		type (static_cast<Transaction::TransactionType>(_type))
 	{
-		amount = _amount;
-		date = get_current_date();
-		category = static_cast<Transaction::TransactionCategory>(_category);
-		type = static_cast<Transaction::TransactionType>(_type);
+	}
+
+	Transaction::Transaction(int _amount, int _category, int _type, Transaction::Date _date) :
+		amount(_amount),
+		date(_date),
+		category(static_cast<Transaction::TransactionCategory>(_category)),
+		type(static_cast<Transaction::TransactionType>(_type))
+	{
 	}
 
 	int Transaction::GetAmount() const
@@ -22,7 +30,7 @@
 		return this->amount;
 	}
 
-	auto Transaction::GetDate() const
+	Transaction::Date Transaction::GetDate() const
 	{
 		return this->date;
 	}
@@ -31,10 +39,10 @@
 	{
 		switch (category)
 		{
-		case TransactionCategory::CHEMISTRY: {return "CHEMISTRY"; break;}
-		case TransactionCategory::GASOLINE: {return "GASOLINE"; break;}
-		case TransactionCategory::HOMEPAY: {return "HOMEPAY"; break;}
-		case TransactionCategory::PRODUCTS: {return "PRODUCTS"; break;}
+		case TransactionCategory::CHEMISTRY: {return "CHEMISTRY";}
+		case TransactionCategory::GASOLINE: {return "GASOLINE";}
+		case TransactionCategory::HOMEPAY: {return "HOMEPAY";}
+		case TransactionCategory::PRODUCTS: {return "PRODUCTS";}
 		}
 
 	}
@@ -43,8 +51,8 @@
 	{
 		switch (type)
 		{
-		case TransactionType::INCOME: {return "INCOME"; break;}
-		case TransactionType::OUT: {return "OUT"; break;}
+		case TransactionType::INCOME: {return "INCOME";}
+		case TransactionType::OUT: {return "OUT";}
 		
 		}
 
