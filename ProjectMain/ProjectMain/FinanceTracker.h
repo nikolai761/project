@@ -23,6 +23,8 @@ public:
 
 	bool SaveOperations(std::vector<Transaction>, const std::string& filename);
 
+	bool LoadOperations(std::vector<Transaction>, const std::string& filename);
+
 	void EditOperation();
 
 	void SearchBySumm(int);

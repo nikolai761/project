@@ -51,6 +51,8 @@ public:
 
 	Transaction::Date GetDate() const;
 
+	void ShowDate() const;
+
 	std::string GetCategory() const;
 
 	std::string GetType() const;

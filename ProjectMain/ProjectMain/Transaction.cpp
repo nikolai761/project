@@ -35,6 +35,11 @@
 		return this->date;
 	}
 
+	void Transaction::ShowDate() const
+	{
+		std::cout << GetDate().day << "." << GetDate().month << "." << GetDate().year <<"\n";
+	}
+
 	std::string Transaction::GetCategory() const
 	{
 		switch (category)

@@ -56,7 +56,8 @@ bool FinanceTracker::SaveOperation(Transaction Tr, const std::string& filename)
 {
 	std::ofstream file(filename, std::ios::app);
 	if (!file.is_open()) return false;
-	file << Tr.GetAmount() << " " << Tr.GetType() << " " << Tr.GetCategory() << " " << Tr.GetDate() << "\n";
+	file << Tr.GetAmount() << " " << Tr.GetType() << " " << Tr.GetCategory() << " ";
+	Tr.ShowDate();
 	file.close();
 	return true;
 }
@@ -67,11 +68,15 @@ bool FinanceTracker::SaveOperations(std::vector<Transaction> Trs, const std::str
 	if (!file.is_open()) return false;
 	for (auto t : Trs)
 	{
-		file << t.GetAmount() << " " << t.GetType() << " " << t.GetCategory() << " " << t.GetDate() << "\n";
-		
-
+		file << t.GetAmount() << " " << t.GetType() << " " << t.GetCategory() << " ";
+		t.GetDate();
 	}
 	file.close();
+	return true;
+}
+
+bool FinanceTracker::LoadOperations(std::vector<Transaction>, const std::string& filename)
+{
 	return false;
 }
 
