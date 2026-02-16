@@ -16,7 +16,7 @@ void FinanceTracker::Show() const
 		std::cout << "Amount : " << op.GetAmount()<< std::endl;
 		std::cout << "Cetegory : " << op.GetCategory() << std::endl;
 		std::cout << "Type : " << op.GetType() << std::endl;
-		std::cout << "Date : \n" << "Day: " << op.GetDate().day << "-" << "Month: " << op.GetDate().day << "-" << "Day: " << op.GetDate().day << "-" << std::endl;
+		std::cout << "Date : \n" << "Day: " << op.GetDay() << "-" << "Month: " << op.GetMonth() << "-" << "Day: " << op.GetYear() << "-" << std::endl;
 		std::cout << "//////////////////////////////////////" << std::endl;
 	}
 }
@@ -26,7 +26,7 @@ void FinanceTracker::ShowTransaction(Transaction T) const
 	std::cout << "Amount : " << T.GetAmount() << std::endl;
 	std::cout << "Cetegory : " << T.GetCategory() << std::endl;
 	std::cout << "Type : " << T.GetType() << std::endl;
-	std::cout << "Date : \n" << "Day: "<< T.GetDate().day <<"-" << "Month: " << T.GetDate().day << "-" << "Day: " << T.GetDate().day << "-" << std::endl;
+	std::cout << "Date : \n" << "Day: " << T.GetDay() << "-" << "Month: " << T.GetMonth() << "-" << "Day: " << T.GetYear() << "-" << std::endl;
 	std::cout << "//////////////////////////////////////" << std::endl;
 }
 
@@ -56,8 +56,7 @@ bool FinanceTracker::SaveOperation(Transaction Tr, const std::string& filename)
 {
 	std::ofstream file(filename, std::ios::app);
 	if (!file.is_open()) return false;
-	file << Tr.GetAmount() << " " << Tr.GetType() << " " << Tr.GetCategory() << " ";
-	Tr.ShowDate();
+	file << Tr.GetAmount() << " " << Tr.GetType() << " " << Tr.GetCategory() << " " << Tr.GetDay() << "." << Tr.GetMonth() << "." << Tr.GetYear() << "\n";
 	file.close();
 	return true;
 }
@@ -68,8 +67,7 @@ bool FinanceTracker::SaveOperations(std::vector<Transaction> Trs, const std::str
 	if (!file.is_open()) return false;
 	for (auto t : Trs)
 	{
-		file << t.GetAmount() << " " << t.GetType() << " " << t.GetCategory() << " ";
-		t.GetDate();
+		file << t.GetAmount() << " " << t.GetType() << " " << t.GetCategory() << " " << t.GetDay() << "." << t.GetMonth() << "." << t.GetYear() << "\n";
 	}
 	file.close();
 	return true;
@@ -77,7 +75,8 @@ bool FinanceTracker::SaveOperations(std::vector<Transaction> Trs, const std::str
 
 bool FinanceTracker::LoadOperations(std::vector<Transaction>, const std::string& filename)
 {
-	return false;
+	std::ifstream file(filename, std::ios::app);
+	return true;
 }
 
 

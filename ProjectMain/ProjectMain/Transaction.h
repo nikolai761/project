@@ -49,9 +49,13 @@ public:
 	
 	int GetAmount() const;
 
-	Transaction::Date GetDate() const;
+	std::string GetDay() const;
 
-	void ShowDate() const;
+	std::string GetMonth() const;
+
+	std::string GetYear() const;
+
+	//void ShowDate() const;
 
 	std::string GetCategory() const;
 

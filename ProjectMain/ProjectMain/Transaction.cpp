@@ -30,15 +30,22 @@
 		return this->amount;
 	}
 
-	Transaction::Date Transaction::GetDate() const
+	std::string Transaction::GetDay() const
 	{
-		return this->date;
+		return std::to_string(this ->date.day);
 	}
 
-	void Transaction::ShowDate() const
+	std::string Transaction::GetMonth() const
 	{
-		std::cout << GetDate().day << "." << GetDate().month << "." << GetDate().year <<"\n";
+		return std::to_string(this->date.month);
 	}
+
+	std::string Transaction::GetYear() const
+	{
+		return std::to_string(this->date.year);
+	}
+
+	
 
 	std::string Transaction::GetCategory() const
 	{
